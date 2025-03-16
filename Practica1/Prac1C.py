@@ -2,13 +2,6 @@ from random import randint
 
 opciones = ["piedra", "papel", "tijeras", "lagartija", "spock"]
 
-reglas = {
-    "piedra": ["tijera", "lagartija"],
-    "papel": ["piedra", "spock"],
-    "tijera": ["papel", "lagartija"],
-    "lagartija": ["spock", "papel"],
-    "spock": ["tijera", "piedra"]
-}
 
 print('''¡Bienvenido!
           ¡Vamos a jugar Piedra|Papel|Tijeras|Lagartija|Spock!
