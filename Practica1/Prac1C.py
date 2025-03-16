@@ -2,7 +2,10 @@ from random import randint
 
 opciones = ["piedra", "papel", "tijeras", "lagartija", "spock"]
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6f75e4ce9a7d1b6d7811cdea8b9ad6e56bd83415
 print('''¡Bienvenido!
           ¡Vamos a jugar Piedra|Papel|Tijeras|Lagartija|Spock!
           Escribe tu opción en minusculas.
