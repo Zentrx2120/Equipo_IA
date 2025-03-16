@@ -16,9 +16,11 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import tracemalloc
 import time
+import random 
 
 
-def dfs(graph, root):
+def dfs(graph, root, solution):
+    print("\tInicia DFS")
     # Start time measure and memmory
     tracemalloc.start() # Start memmory mesurement
     start_time = time.time() # Time start reference
@@ -45,15 +47,20 @@ def dfs(graph, root):
                 # Put children to the stack
                 stack = stack + [children]
 
+        if current_node == solution:
+            print(f"Solucion encontrada en: {current_node}")
+            stack = []
+
     end_time = time.time()
     current, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
     print("Execution Time: ", end_time - start_time)
-    print(f"Max memory: {peak / 10**6} MB  Current memory: {current / 10**6} MB")
+    print(f"Max memory: {peak / 10**6} MB  Current memory: {current / 10**6} MB\n\n")
     
 
-def bfs(graph, root):
+def bfs(graph, root, solution):
+    print("\tInicia BFS")
     # Start time measure and memmory
     tracemalloc.start() # Start memmory mesurement
     start_time = time.time() # Time start reference
@@ -65,36 +72,58 @@ def bfs(graph, root):
     visited_nodes[root] = True
 
     while len(queue) > 0:
-        current_node = queue[0] # Get last stack position value
+        current_node = queue[0] # Get first queue position value
         print("Current node: ", current_node)
 
         # Pop
         queue = queue[1:]
-        print("Queue: ", queue)
 
         # Obtain values of the key current_node
         for child in graph[current_node]:
             if not visited_nodes[child]:
                 # Mark as visited child not visited
                 visited_nodes[child] = True
-                # Put child to the stack
+                # Put child to the queue
                 queue = queue + [child]
+
+        if current_node == solution:
+            print(f"Solucion encontrada en: {current_node}")
+            queue = []
 
     end_time = time.time()
     current, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
     print("Execution Time: ", end_time - start_time)
-    print(f"Max memory: {peak / 10*6} MB  Current memory: {current / 10*6} MB")
+    print(f"Max memory: {peak / 10*6} MB  Current memory: {current / 10*6} MB\n\n")
     
 
-graph = {
+graph_1 = {
     1: [3, 2],
-    2: [1, 4, 5],
+    2: [1, 5, 4],
     3: [1, 6],
     4: [2],
     5: [2],
     6: [3]
 }
 
-dfs(graph, 1)
+graph_2 = {
+    1: [2, 5, 8],
+    2: [1, 3, 4],
+    3: [2],
+    4: [2],
+    5: [1, 6, 7],
+    6: [5],
+    7: [5],
+    8: [1, 9, 10],
+    9: [8], 
+    10: [8] 
+}
+
+graph = graph_2
+root = 1
+solution = random.randrange(1, len(graph) + 1)
+print(f"La solucion esta en el nodo {solution}\n")
+
+bfs(graph, root, solution)
+dfs(graph, root, solution)
