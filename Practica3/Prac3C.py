@@ -129,7 +129,7 @@ def dfs(maze, root_node, final_point, n):
 
         considered_nodes += [current_node]
 
-        # Check if current node is the solution
+        # En caso de ser la sulución
         if current_node == final_point:
             end_time = time.time()
             current, peak = tracemalloc.get_traced_memory()

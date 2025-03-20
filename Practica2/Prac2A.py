@@ -1,7 +1,7 @@
 import time
 import tracemalloc
 
-# Algoritmo de búsqueda en profundidad (DFS)
+# Algoritmo de búsqueda en profundidad (BFS)
 def bfs(graph, root, solution):
     print("\tInicia BFS")
     
