@@ -49,7 +49,7 @@ def bfs(graph, root, solution):
             # VacÃ­a la cola
             queue = []
 
-        plot_graph(grafo, root, solution, current_node)
+        plot_graph(graph, root, solution, current_node)
 
     end_time = time.time()
     current, peak = tracemalloc.get_traced_memory()
@@ -72,7 +72,7 @@ def plot_graph(grafo, nodo_raiz, nodo_sol, nodo_actual):
         for vecino in vecinos:
             G.add_edge(nodo, vecino)
 
-    # Usar el layout de Graphviz a travÃ©s de pydot
+    # Usar el layout de Graphviz a traves de pydot
     pos_raiz = nx.nx_pydot.graphviz_layout(G, prog='dot')
     pos = nx.nx_pydot.graphviz_layout(G, prog='dot')
 
@@ -80,7 +80,7 @@ def plot_graph(grafo, nodo_raiz, nodo_sol, nodo_actual):
     nx.draw(G, pos_raiz, with_labels=True, node_color='lightblue', node_size=500, font_size=11, font_weight='bold')
     nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=500, font_size=11, font_weight='bold')
 
-    # Resaltar el nodo soluciÃ³n y el nodo raÃ­z
+    # Resaltar el nodo solucion y el nodo rai­z
     nx.draw_networkx_nodes(G, pos, nodelist=[nodo_sol], node_color='red', node_size=700)
     nx.draw_networkx_nodes(G, pos, nodelist=[nodo_raiz], node_color='yellow', node_size=700)
     nx.draw_networkx_nodes(G, pos, nodelist=[nodo_actual], node_color='green', node_size=700)
