@@ -26,10 +26,6 @@ def n_reinas(n):
     fila = 0
     colum = [0] * n
 
-    # if fila == n:
-    #     imprimir_tablero(tablero, n)
-    #     return True
-
     # mientras haya filas por procesar
     while fila >= 0:
 
@@ -71,10 +67,8 @@ def n_reinas(n):
             tablero[fila] = col
             imprimir_tablero(tablero, n)
             fila += 1
-            # if resolvedor(tablero, fila + 1):
-            #     return True
+
         else:
-            # print(f"Backtracking: Retirando la reina de la fila {fila}, columna {col}")
             colum[fila] += 1
 #-----------------------------------------------------------------------------------------
 n_reinas(8)

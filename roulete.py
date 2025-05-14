@@ -9,5 +9,5 @@ def assign_task(activities):
 
     return result
 
-activities = ['Practica 1', 'Practica 2', 'Practica 3']
+activities = ['Practica backtracking b)', 'Practica A* a)', 'Practica A* b) y c)', 'Practica Dijkstra a) y b)', 'Practica Dijkstra c)']
 print(assign_task(activities))

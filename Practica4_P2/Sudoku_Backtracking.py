@@ -13,17 +13,17 @@ def imprimir_tablero(tablero, n):
             print(tablero[i][j], end=" ")
         print()
     print()
-#---------------------------------------------------------------------------------------------------
-def llenar_aleatorio(tablero, cantidad, n):
-    celdas_vacias = [(i, j) for i in range(n) for j in range(n) if tablero[i][j] == 0]
-    random.shuffle(celdas_vacias)
-    for _ in range(cantidad):
-        if not celdas_vacias:
-            break
-        fila, colum = celdas_vacias.pop()
-        num = random.randint(1, n)
-        if es_valido(tablero, fila, colum, num, n):
-            tablero[fila][colum] = num
+# #---------------------------------------------------------------------------------------------------
+# def llenar_aleatorio(tablero, cantidad, n):
+#     celdas_vacias = [(i, j) for i in range(n) for j in range(n) if tablero[i][j] == 0]
+#     random.shuffle(celdas_vacias)
+#     for _ in range(cantidad):
+#         if not celdas_vacias:
+#             break
+#         fila, colum = celdas_vacias.pop()
+#         num = random.randint(1, n)
+#         if es_valido(tablero, fila, colum, num, n):
+#             tablero[fila][colum] = num
 #---------------------------------------------------------------------------------------------------
 def es_valido(tablero, fila, colum, num, n):
     # Verifica si el número ya está en la fila
