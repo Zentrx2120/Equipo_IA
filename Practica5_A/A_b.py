@@ -69,8 +69,10 @@ def A_estrella(laberinto, punto_inicial, meta, heuristica):
         # Se añade a la lista de considerados
         # Se actualiza la lista cerrada
         nodo_actual, g_actual, f_actual, camino_actual = min(lista_abierta, key=lambda x: x[2])
-        lista_abierta.remove((nodo_actual, g_actual, f_actual, camino_actual))
-        considerados.append(nodo_actual)
+        lista_abierta = [
+            item for item in lista_abierta
+            if item != (nodo_actual, g_actual, f_actual, camino_actual)]
+        considerados += [nodo_actual]
 
         # Si se encuentra la meta, se detiene el seguimiento de memoria
         if nodo_actual == meta:
@@ -92,7 +94,7 @@ def A_estrella(laberinto, punto_inicial, meta, heuristica):
 
                     # Verificar si ya está con mejor g
                     if not any(n == new_pos and g <= g_nuevo for n, g, f, c in lista_abierta):
-                        lista_abierta.append((new_pos, g_nuevo, f_nuevo, camino_actual + [nodo_actual]))
+                        lista_abierta = lista_abierta + [(new_pos, g_nuevo, f_nuevo, camino_actual + [nodo_actual])]
 
     # Si no se encuentra la meta
     end_time = time.time()

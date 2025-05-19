@@ -50,8 +50,10 @@ def A_estrella(laberinto, punto_inicial, meta):
 
     while lista_abierta:
         nodo_actual, g_actual, f_actual, camino_actual = min(lista_abierta, key=lambda x: x[2])
-        lista_abierta.remove((nodo_actual, g_actual, f_actual, camino_actual))
-        considerados.append(nodo_actual)
+        lista_abierta = [
+            item for item in lista_abierta
+            if item != (nodo_actual, g_actual, f_actual, camino_actual)]
+        considerados += [nodo_actual]
         energia_total += g_actual  # Sumar el costo g del nodo actual a la energía total
 
         if nodo_actual == meta:
@@ -70,7 +72,7 @@ def A_estrella(laberinto, punto_inicial, meta):
                     f_nuevo = g_nuevo + heuristica(new_pos, meta)
 
                     if not any(n == new_pos and g <= g_nuevo for n, g, f, c in lista_abierta):
-                        lista_abierta.append((new_pos, g_nuevo, f_nuevo, camino_actual + [nodo_actual]))
+                        lista_abierta = lista_abierta + [(new_pos, g_nuevo, f_nuevo, camino_actual + [nodo_actual])]
 
     return None, considerados, energia_total
 
