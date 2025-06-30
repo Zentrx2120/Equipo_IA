@@ -30,7 +30,8 @@ laberinto = np.array([
 # ---------- Parámetros ----------
 nodo_raiz = (1, 1)
 meta = (17, 17)
-movimientos = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # solo ortogonales
+movimientos = [(-1,1),(-1,-1),(-1,0),(1,-1), (0,1), (1,1), (1,0), (0,-1)]
+#movimientos = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # solo ortogonales
 
 # ---------- Heurísticas ----------
 # La heurística utilizada es la distancia Manhattan
